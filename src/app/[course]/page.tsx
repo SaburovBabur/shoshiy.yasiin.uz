@@ -125,7 +125,7 @@ function Course({ params }: { params: { course: string } }) {
 						key={course.slug}
 						className="w-full rounded-lg bg-white/10 py-3 px-3 cursor-pointer | flex gap-7 hover:scale-[102%] duration-def relative"
 					>
-						<div className="absolute left-2 top-3 " style={{ filter: 'blur(100px)' }}>
+						<div className="absolute left-2 top-3 " style={{ filter: 'blur(30px)' }}>
 							<Image
 								src={course.image.url}
 								alt={course.image.alt}

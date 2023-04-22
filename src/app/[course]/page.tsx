@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 export interface TypeCourse {
@@ -24,6 +25,30 @@ export interface TypeCourseLesson {
 	title: string
 }
 
+const lessons: { [key: string]: TypeCourseLesson[] } = {
+	'durusul-lugah-1-kitob': [
+		{
+			title: '',
+			slug: '',
+		},
+		{
+			title: '',
+			slug: '',
+		},
+		{
+			title: '',
+			slug: '',
+		},
+		{
+			title: '',
+			slug: '',
+		},
+		{
+			title: '',
+			slug: '',
+		},
+	],
+}
 const courses: TypeCourse[] = [
 	{
 		slug: 'durusul-lugah-1-kitob',
@@ -38,12 +63,7 @@ const courses: TypeCourse[] = [
 			title: 'Boshlang`ich',
 			num: 1,
 		},
-		lessons: [
-			{
-				slug: '',
-				title: '',
-			},
-		],
+		lessons: lessons['durusul-lugah-1-kitob'],
 	},
 
 	{
@@ -90,22 +110,26 @@ const courses: TypeCourse[] = [
 	},
 ]
 
-function Course() {
+function Course({ params }: { params: { course: string } }) {
+	const { course: courseName } = params
+
 	return (
 		<>
 			<div className="h-[100px]" />
 
 			<div className="space-y-14">
 				{courses.map((course, idx) => (
-					<div
+					<Link
+						href={`/${courseName}/${course.slug}`}
+						replace={false}
 						key={course.slug}
-						className="w-full rounded-lg border border-[#CFCFCF]/50 bg-white/10 py-3 px-3 cursor-pointer | flex gap-9 hover:scale-[102%] duration-def relative"
+						className="w-full rounded-lg bg-white/10 py-3 px-3 cursor-pointer | flex gap-7 hover:scale-[102%] duration-def relative"
 					>
 						<div className="absolute left-2 top-3 " style={{ filter: 'blur(100px)' }}>
 							<Image
 								src={course.image.url}
 								alt={course.image.alt}
-								height={200}
+								height={150}
 								width={150}
 								className="select-none"
 							/>
@@ -118,23 +142,24 @@ function Course() {
 							className="select-none relative"
 						/>
 
-						<div className="flex flex-col justify-between">
+						<div className="flex flex-col justify-between py-2">
 							<h3 className="h1">{course.title}</h3>
 							<p className="p">{course.subTitle}</p>
 
-							<div className="opacity-70 flex items-center gap-20">
+							<div className="flex items-center gap-20">
 								<div className="flex items-center gap-3">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										fill="none"
-										stroke="currentColor"
-										strokeLinecap="round"
-										strokeLinejoin="round"
 										viewBox="0 0 24 24"
-										className="w-6 h-6"
+										strokeWidth={1.5}
+										stroke="currentColor"
+										className="w-5 h-5"
 									>
-										<path d="M22.54 6.42a2.78 2.78 0 00-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 00-1.94 2A29 29 0 001 11.75a29 29 0 00.46 5.33A2.78 2.78 0 003.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 001.94-2 29 29 0 00.46-5.25 29 29 0 00-.46-5.33z"></path>
-										<path d="M9.75 15.02L15.5 11.75 9.75 8.48 9.75 15.02z"></path>
+										<path
+											strokeLinecap="round"
+											d="M15.75 10.5l4.72-4.72a.75.75 0 011.28.53v11.38a.75.75 0 01-1.28.53l-4.72-4.72M4.5 18.75h9a2.25 2.25 0 002.25-2.25v-9a2.25 2.25 0 00-2.25-2.25h-9A2.25 2.25 0 002.25 7.5v9a2.25 2.25 0 002.25 2.25z"
+										/>
 									</svg>
 
 									<p className="p/2">{course.lessons.length}</p>
@@ -161,12 +186,12 @@ function Course() {
 							</div>
 
 							<div className="flex items-center gap-2">
-								<p className="p/2 opacity-70">
+								<p className="p/2 text-white/70">
 									Kurs arab tilini 0 dan boshlayotkanlar uchun mo’ljallangan. Davomiyligi ~1 oy uchun
 									mo`ljallangan.
 								</p>
 
-								<div className="bg-white/10 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
+								{/* <div className="bg-white/10 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										width="24"
@@ -182,10 +207,10 @@ function Course() {
 											d="M5 4.832a1 1 0 011.54-.842l11.152 7.169a1 1 0 010 1.682L6.54 20.01A1 1 0 015 19.17V4.831z"
 										></path>
 									</svg>
-								</div>
+								</div> */}
 							</div>
 						</div>
-					</div>
+					</Link>
 				))}
 			</div>
 

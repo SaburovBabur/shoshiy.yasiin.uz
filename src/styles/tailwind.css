@@ -31,11 +31,7 @@ body {
 }
 
 .p {
-  @apply text-base font-normal
-}
-
-.p {
-  @apply !text-[14px] leading-4 font-normal
+  @apply text-base font-normal text-white
 }
 
 .p\/2 {

@@ -17,3 +17,27 @@ body {
 .duration-def {
   transition-duration: var(--duration);
 }
+
+.h1 {
+  @apply text-2xl font-bold
+}
+
+.h2 {
+  @apply text-[22px] leading-5 font-bold
+}
+
+.h3 {
+  @apply text-xl font-bold
+}
+
+.p {
+  @apply text-base font-normal
+}
+
+.p {
+  @apply !text-[14px] leading-4 font-normal
+}
+
+.p\/2 {
+  @apply !text-[14px] leading-5 font-normal
+}

@@ -1,12 +1,4 @@
-import Container from '@/components/Container'
-import Header from '@/components/Header'
-
-export default function Home() {
-	return (
-		<Container>
-			<div className="py-7">
-				<Header />
-			</div>
-		</Container>
-	)
+import { redirect } from 'next/navigation'
+export default async function Home() {
+	redirect('/durusul-lugah')
 }

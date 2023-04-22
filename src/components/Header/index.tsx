@@ -14,7 +14,7 @@ function Header({ children }: HeaderProps) {
 	const pathname = usePathname()
 
 	const activeTab = () => {
-		if (pathname === '/') {
+		if (pathname === '/durusul-lugah') {
 			return 'durusul-lugah'
 		}
 
@@ -25,7 +25,7 @@ function Header({ children }: HeaderProps) {
 
 	return (
 		<>
-			<header className="flex items-center justify-between -ml-5">
+			<header className="flex items-center justify-between">
 				<Logo className="h-5" />
 				<Tabs
 					onChange={(tab) => console.log(tab)}

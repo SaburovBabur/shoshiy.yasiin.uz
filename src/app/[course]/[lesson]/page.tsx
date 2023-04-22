@@ -1,7 +1,8 @@
 import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
-function Lesson() {
+function Lesson({ params }: { params: { course: string; lesson: string } }) {
 	return (
 		<div>
 			<div className="h-[100px]" />
@@ -29,6 +30,22 @@ function Lesson() {
 						</svg>
 					</div>
 				</div>
+			</div>
+
+			<div className="h-[50px]" />
+
+			<div className="flex flex-col gap-8 relative">
+				<div className="h-[100%] w-[1px] rounded-full absolute top-0 left-[5.5px] bg-primary-def" />
+				{Array(19)
+					.fill('-dars-هَذا-bu')
+					.map((lesson, idx) => (
+						<Link href={`/${params.course}/${params.lesson}/${lesson}`} key={idx} className="flex items-center">
+							<div className="h-3 w-3 bg-primary-def rounded-full" />
+							<p className="p inline-block hover:text-primary-def duration-def cursor-pointer hover:bg-[#00DA83]/10 hover:font-medium px-5 py-2 ml-1 rounded-md">
+								{idx + 1} - dars (a) | هَذَا -bu
+							</p>
+						</Link>
+					))}
 			</div>
 		</div>
 	)

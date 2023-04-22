@@ -1,6 +1,21 @@
+import { courses } from '@/data'
 import React from 'react'
 
-function Article({ params }: { params: { course: string; lesson: string } }) {
+function Article({ params }: { params: { course: string; lesson: string; article: string } }) {
+	const courseData = courses().find((course) => (course.slug === params.lesson ? course : false))
+
+	if (!courseData) {
+		return <>Bunday kurs mavjud emas!</>
+	}
+
+	const articleData = courseData.lessons.find((lesson) => (lesson.slug === params.article ? lesson : false))
+
+	if (!articleData) {
+		return <>Bunday kurs mavjud emas!</>
+	}
+
+	console.log(articleData)
+
 	return (
 		<div>
 			<div className="h-[50px]" />
@@ -8,13 +23,12 @@ function Article({ params }: { params: { course: string; lesson: string } }) {
 			<div
 				className="w-full rounded-lg overflow-hidden max-h-[350px]"
 				dangerouslySetInnerHTML={{
-					__html: `
-                    <iframe width="100%" height="350" src="https://www.youtube-nocookie.com/embed/1C-14Y-tZ5c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+					__html: articleData.html,
 				}}
 			/>
 			<div className="h-[50px]" />
 
-			<h3 className="h3">1-dars (a) | هَذَا - bu</h3>
+			<h3 className="h1">{articleData.title}</h3>
 
 			<div className="h-[30px]" />
 

@@ -2,131 +2,24 @@ import SvgEmpty from '@/SvgEmpty'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
-
-export interface TypeCourse {
-	slug: string
-	title: string
-	image: {
-		url: string
-		alt: string
-	}
-	subTitle: string
-	description: string
-	level: TypeCourseLevel
-	lessons: TypeCourseLesson[]
-}
-
-export interface TypeCourseLevel {
-	title: string
-	num: number
-}
-
-export interface TypeCourseLesson {
-	slug: string
-	title: string
-}
-
-const lessons: { [key: string]: TypeCourseLesson[] } = {
-	'durusul-lugah-1-kitob': [
-		{
-			title: '',
-			slug: '',
-		},
-		{
-			title: '',
-			slug: '',
-		},
-		{
-			title: '',
-			slug: '',
-		},
-		{
-			title: '',
-			slug: '',
-		},
-		{
-			title: '',
-			slug: '',
-		},
-	],
-}
-const courses: TypeCourse[] = [
-	{
-		slug: 'durusul-lugah-1-kitob',
-		image: {
-			url: '/book-1.png',
-			alt: 'Durusul lughatil 1-kitob rasmi',
-		},
-		title: '1 - kitob',
-		subTitle: 'Durusul lug`ah',
-		description: 'Kurs arab tilini 0 dan boshlayotkanlar uchun mo’ljallangan. Davomiyligi ~1 oy uchun mo`ljallangan.',
-		level: {
-			title: 'Boshlang`ich',
-			num: 1,
-		},
-		lessons: lessons['durusul-lugah-1-kitob'],
-	},
-
-	{
-		slug: 'durusul-lugah-2-kitob',
-		image: {
-			url: '/book-2.png',
-			alt: 'Durusul lughatil 2-kitob rasmi',
-		},
-		title: '2 - kitob',
-		subTitle: 'Durusul lug`ah',
-		description: 'Kurs 1 kitobning davomi. Davomiyligi ~2-3 oy uchun mo`ljallangan.',
-		level: {
-			title: 'O’rtacha',
-			num: 2,
-		},
-		lessons: [
-			{
-				slug: '',
-				title: '',
-			},
-		],
-	},
-
-	{
-		slug: 'durusul-lugah-3-kitob',
-		image: {
-			url: '/book-3.png',
-			alt: 'Durusul lughatil 3-kitob rasmi',
-		},
-		title: '3 - kitob',
-		subTitle: 'Durusul lug`ah',
-		description:
-			'Kurs 2 kitobning davomi,  va yana bo’limlar qo’shilishi mumkun. Davomiyligi 3-4 oy uchun mo`ljallangan.',
-		level: {
-			title: 'Yuqori',
-			num: 3,
-		},
-		lessons: [
-			{
-				slug: '',
-				title: '',
-			},
-		],
-	},
-]
+import { courses } from '@/data'
 
 function Course({ params }: { params: { course: string } }) {
 	const { course: courseName } = params
 
 	return (
 		<>
-			<div className="h-[50px]" />
+			<div className="h-[100px]" />
 
 			<div className="space-y-14">
 				{courseName === 'durusul-lugah' ? (
 					<>
-						{courses.map((course, idx) => (
+						{courses().map((course, idx) => (
 							<Link
 								href={`/${courseName}/${course.slug}`}
 								replace={false}
 								key={course.slug}
-								className="w-full rounded-lg bg-white/10 py-3 px-3 cursor-pointer | flex gap-7 hover:scale-[102%] duration-def relative"
+								className="w-full rounded-lg bg-white/10 py-4 px-4 cursor-pointer | flex gap-7 hover:scale-[102%] duration-def relative"
 							>
 								<div className="absolute left-2 top-3 " style={{ filter: 'blur(30px)' }}>
 									<Image
@@ -189,28 +82,7 @@ function Course({ params }: { params: { course: string } }) {
 									</div>
 
 									<div className="flex items-center gap-2">
-										<p className="p/2 text-white/70">
-											Kurs arab tilini 0 dan boshlayotkanlar uchun mo’ljallangan. Davomiyligi ~1 oy
-											uchun mo`ljallangan.
-										</p>
-
-										{/* <div className="bg-white/10 rounded-full w-12 h-12 flex items-center justify-center flex-shrink-0">
-									<svg
-										xmlns="http://www.w3.org/2000/svg"
-										width="24"
-										height="24"
-										fill="none"
-										viewBox="0 0 24 24"
-										className="ml-1"
-									>
-										<path
-											stroke="#fff"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											d="M5 4.832a1 1 0 011.54-.842l11.152 7.169a1 1 0 010 1.682L6.54 20.01A1 1 0 015 19.17V4.831z"
-										></path>
-									</svg>
-								</div> */}
+										<p className="p/2 text-white/70">{course.description}</p>
 									</div>
 								</div>
 							</Link>
@@ -218,9 +90,7 @@ function Course({ params }: { params: { course: string } }) {
 					</>
 				) : (
 					<div className="h-1/3">
-						<div className="h-[50px]" />
-
-						<h3 className="h1 flex items-center justify-center">Tez orada!</h3>
+						<h3 className="h1 flex items-center justify-center">Tez orada إن شاء الله</h3>
 
 						<SvgEmpty />
 					</div>

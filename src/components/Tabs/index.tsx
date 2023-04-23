@@ -18,8 +18,12 @@ function Tabs<T extends string>({ value, onChange, tabs }: TabsProps<T>) {
 	const [activeTab, setActiveTab] = useState<HTMLButtonElement | null>(null)
 	const [isFromNull, setIsFromNull] = useState(true)
 	const tabsRef = useRef<{ [key in T]: HTMLButtonElement }>({} as { [key in T]: HTMLButtonElement })
+	const navRef = useRef<HTMLDivElement>(null)
 
 	const location = activeTab?.getBoundingClientRect()
+	const navSize = navRef.current?.getBoundingClientRect()
+
+	console.log(navSize)
 
 	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		setActiveTab(e.currentTarget)
@@ -42,16 +46,16 @@ function Tabs<T extends string>({ value, onChange, tabs }: TabsProps<T>) {
 	const activeTabValue = activeTab?.id.replace(chaq, '')
 
 	return (
-		<nav className="flex items-center select-none">
+		<nav ref={navRef} className="flex items-center select-none | relative">
 			<div
 				style={{
 					width: location?.width,
 					height: location?.height,
-					top: location?.top,
-					left: location?.left,
+					top: (location?.top || 0) - (navSize?.top || 0),
+					left: (location?.left || 0) - (navSize?.left || 0),
 					transitionDuration,
 				}}
-				className={clsx('boundary bg-white/10 rounded-md absolute top-0 left-0')}
+				className={clsx('boundary bg-white/20 rounded-md absolute top-0 left-0')}
 			/>
 
 			{tabs.map((tab, idx) => (

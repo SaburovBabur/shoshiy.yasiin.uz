@@ -20,8 +20,6 @@ export async function getStaticProps(context: any) {
 		throw new Error()
 	}
 
-	console.log(process.env.NODE_ENV)
-
 	const res = await fetch(
 		`${process.env.NODE_ENV === 'development' ? process.env.URL : 'https://shoshiy-yasiin-uz.vercel.app'}/${book.json}`,
 		{

@@ -2,8 +2,6 @@ import { HomeLayout } from '@/components/Layout'
 import { TypeCourseLesson, courses } from '@/data'
 
 export async function getStaticPaths(params: any) {
-	// console.log(params, 'params')
-
 	return {
 		paths: [
 			{ params: { book: '1', course: 'durusul-lugah', lesson: 'durusul-lugah' } },
@@ -14,19 +12,28 @@ export async function getStaticPaths(params: any) {
 }
 
 export async function getStaticProps(context: any) {
-	const { book: bookName, lesson: lessonName } = context.params
-	const courseData = courses().find((course) => (course.slug === bookName ? course : false))
-	const lesson = courseData?.lessons.find((lesson) => (lesson.slug === lessonName ? lesson : false))
+	try {
+		const { book: bookName, lesson: lessonName } = context.params
+		const courseData = courses().find((course) => (course.slug === bookName ? course : false))
+		const lesson = courseData?.lessons.find((lesson) => (lesson.slug === lessonName ? lesson : false))
 
-	return {
-		// Passed to the page component as props
-		props: { lesson },
+		return {
+			props: { lesson: lesson ? lesson : null },
+		}
+	} catch (error) {
+		return {
+			props: { lesson: null },
+		}
 	}
 }
 
 function Article({ lesson }: { lesson: TypeCourseLesson }) {
 	if (!lesson) {
-		return <>Bunday kurs mavjud emas!</>
+		return (
+			<HomeLayout>
+				<h3 className="h3 flex items-center justify-center pt-10">Bunday kurs mavjud emas 📚</h3>
+			</HomeLayout>
+		)
 	}
 
 	return (

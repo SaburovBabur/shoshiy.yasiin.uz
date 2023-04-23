@@ -16,8 +16,6 @@ export async function getStaticPaths(params: any) {
 export async function getStaticProps(context: any) {
 	const { course: courseName } = context.params
 
-	const courseData = courses().find((course) => (course.slug === courseName ? course : false))
-
 	return {
 		// Passed to the page component as props
 		props: { courses: courses(), courseName },
@@ -27,11 +25,13 @@ export async function getStaticProps(context: any) {
 function Course({ courses, courseName }: { courses: TypeCourse[]; courseName: string }) {
 	return (
 		<HomeLayout>
-			<div className="h-[100px]" />
+			<div className="h-[50px]" />
 
 			<div className="space-y-14">
 				{courseName === 'durusul-lugah' ? (
 					<>
+						<h3 className="h1 flex items-center justify-center">Durusul lug`ah 📚</h3>
+
 						{courses.map((course, idx) => (
 							<Link
 								href={`/${courseName}/${course.slug}`}
@@ -114,6 +114,8 @@ function Course({ courses, courseName }: { courses: TypeCourse[]; courseName: st
 					</div>
 				)}
 			</div>
+
+			<div className="h-[50px]" />
 		</HomeLayout>
 	)
 }

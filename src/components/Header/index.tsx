@@ -18,9 +18,15 @@ function Header({ children }: HeaderProps) {
 			return 'durusul-lugah'
 		}
 
-		if (pathname.includes('/ajurrumiyya')) {
+		if (pathname.includes('ajurrumiyya')) {
 			return 'ajurrumiyya'
 		}
+
+		if (pathname.includes('nahv-tatbiqiy')) {
+			return 'nahv-tatbiqiy'
+		}
+
+		return 'durusul-lugah'
 	}
 
 	return (

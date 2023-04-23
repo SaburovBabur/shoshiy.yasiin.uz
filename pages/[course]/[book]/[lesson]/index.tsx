@@ -1,32 +1,47 @@
-import { courses } from '@/data'
-import React from 'react'
+import { HomeLayout } from '@/components/Layout'
+import { TypeCourseLesson, courses } from '@/data'
 
-function Article({ params }: { params: { course: string; lesson: string; article: string } }) {
-	const courseData = courses().find((course) => (course.slug === params.lesson ? course : false))
+export async function getStaticPaths(params: any) {
+	// console.log(params, 'params')
 
-	if (!courseData) {
-		return <>Bunday kurs mavjud emas!</>
+	return {
+		paths: [
+			{ params: { book: '1', course: 'durusul-lugah', lesson: 'durusul-lugah' } },
+			{ params: { book: '2', course: 'durusul-lugah', lesson: 'durusul-lugah' } },
+		],
+		fallback: 'blocking',
 	}
+}
 
-	const articleData = courseData.lessons.find((lesson) => (lesson.slug === params.article ? lesson : false))
+export async function getStaticProps(context: any) {
+	const { book: bookName, lesson: lessonName } = context.params
+	const courseData = courses().find((course) => (course.slug === bookName ? course : false))
+	const lesson = courseData?.lessons.find((lesson) => (lesson.slug === lessonName ? lesson : false))
 
-	if (!articleData) {
+	return {
+		// Passed to the page component as props
+		props: { lesson },
+	}
+}
+
+function Article({ lesson }: { lesson: TypeCourseLesson }) {
+	if (!lesson) {
 		return <>Bunday kurs mavjud emas!</>
 	}
 
 	return (
-		<div>
+		<HomeLayout>
 			<div className="h-[50px]" />
 
 			<div
 				className="w-full rounded-lg overflow-hidden max-h-[350px]"
 				dangerouslySetInnerHTML={{
-					__html: articleData.html,
+					__html: lesson.html,
 				}}
 			/>
 			<div className="h-[50px]" />
 
-			<h3 className="h1">{articleData.title}</h3>
+			<h3 className="h1">{lesson.title}</h3>
 
 			<div className="h-[30px]" />
 
@@ -67,7 +82,7 @@ function Article({ params }: { params: { course: string; lesson: string; article
 			</div>
 
 			<div className="h-[50px]" />
-		</div>
+		</HomeLayout>
 	)
 }
 

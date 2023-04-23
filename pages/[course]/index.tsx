@@ -1,20 +1,38 @@
 import SvgEmpty from '@/SvgEmpty'
 import Image from 'next/image'
 import Link from 'next/link'
-import React from 'react'
-import { courses } from '@/data'
+import { TypeCourse, courses } from '@/data'
+import { HomeLayout } from '@/components/Layout'
 
-function Course({ params }: { params: { course: string } }) {
-	const { course: courseName } = params
+export async function getStaticPaths(params: any) {
+	// console.log(params, 'params')
 
+	return {
+		paths: [{ params: { course: '1' } }, { params: { course: '2' } }],
+		fallback: 'blocking',
+	}
+}
+
+export async function getStaticProps(context: any) {
+	const { course: courseName } = context.params
+
+	const courseData = courses().find((course) => (course.slug === courseName ? course : false))
+
+	return {
+		// Passed to the page component as props
+		props: { courses: courses(), courseName },
+	}
+}
+
+function Course({ courses, courseName }: { courses: TypeCourse[]; courseName: string }) {
 	return (
-		<>
+		<HomeLayout>
 			<div className="h-[100px]" />
 
 			<div className="space-y-14">
 				{courseName === 'durusul-lugah' ? (
 					<>
-						{courses().map((course, idx) => (
+						{courses.map((course, idx) => (
 							<Link
 								href={`/${courseName}/${course.slug}`}
 								replace={false}
@@ -96,7 +114,7 @@ function Course({ params }: { params: { course: string } }) {
 					</div>
 				)}
 			</div>
-		</>
+		</HomeLayout>
 	)
 }
 

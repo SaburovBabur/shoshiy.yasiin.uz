@@ -37,27 +37,27 @@ function Course({ courses, courseName }: { courses: TypeCourse[]; courseName: st
 								href={`/${courseName}/${course.slug}`}
 								replace={false}
 								key={course.slug}
-								className="w-full rounded-lg bg-white/10 py-3 px-3 md:py-4 md:px-4 cursor-pointer | flex gap-7 hover:scale-[102%] duration-def relative"
+								className="w-full rounded-lg bg-white/10 py-3 px-3 md:py-4 md:px-4 cursor-pointer | flex gap-5 md:gap-7 hover:scale-[102%] duration-def relative"
 							>
 								<div className="absolute left-2 top-3 " style={{ filter: 'blur(30px)' }}>
 									<img
 										src={course.image.url}
 										alt={course.image.alt}
-										className="select-none aspect-auto md:h-[200px] h-[180px]"
+										className="select-none aspect-auto md:h-[200px] h-[150px]"
 									/>
 								</div>
 
 								<img
 									src={course.image.url}
 									alt={course.image.alt}
-									className="select-none relative aspect-auto md:h-[200px] h-[180px]"
+									className="select-none relative aspect-auto md:h-[200px] h-[150px]"
 								/>
 
-								<div className="flex flex-col justify-between py-2">
+								<div className="flex flex-col justify-between md:py-2">
 									<h3 className="h1">{course.title}</h3>
 									<p className="p">{course.subTitle}</p>
 
-									<div className="flex items-center gap-20">
+									<div className="flex items-center gap-5 md:gap-20">
 										<div className="flex items-center gap-3">
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
@@ -97,7 +97,7 @@ function Course({ courses, courseName }: { courses: TypeCourse[]; courseName: st
 									</div>
 
 									<div className="flex items-center gap-2">
-										<p className="p/2 text-white/70">{course.description}</p>
+										<p className="p/2 text-white/70 ">{course.description}</p>
 									</div>
 								</div>
 							</Link>

@@ -36,5 +36,5 @@ body {
 }
 
 .p\/2 {
-  @apply !text-[13px] md:!text-[14px] leading-5 font-normal
+  @apply !text-[12px] md:!text-[14px] leading-5 font-normal
 }

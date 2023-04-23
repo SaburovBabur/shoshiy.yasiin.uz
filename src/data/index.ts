@@ -10,7 +10,7 @@ export const courses: () => TypeCourse[] = () => [
 		count: 29,
 		title: '1 - kitob',
 		subTitle: 'Durusul lug`ah',
-		description: `Kurs arab tilini 0 dan boshlayotkanlar uchun mo’ljallangan. Davomiyligi ~1 oy uchun mo'ljallangan.`,
+		description: `Kurs arab tilini 0 dan boshlayotkanlar uchun. Davomiyligi ~1 oy.`,
 		level: {
 			title: 'Boshlang`ich',
 			num: 1,
@@ -53,8 +53,7 @@ export const courses: () => TypeCourse[] = () => [
 		count: 45,
 		title: '3 - kitob',
 		subTitle: 'Durusul lug`ah',
-		description:
-			'Kurs 2 kitobning davomi,  va yana bo’limlar qo’shilishi mumkun. Davomiyligi 3-4 oy uchun mo`ljallangan.',
+		description: 'Kurs 2 kitobning davomi. Davomiyligi ~3-4 oy uchun mo`ljallangan.',
 		level: {
 			title: 'Yuqori',
 			num: 3,

@@ -1,9 +1,7 @@
 import SvgEmpty from '@/SvgEmpty'
-import Image from 'next/image'
 import Link from 'next/link'
 import { TypeCourse, courses } from '@/data'
 import { HomeLayout } from '@/components/Layout'
-import useMediaQuery from '@/hooks/useMediaQuery'
 
 export async function getStaticPaths(params: any) {
 	return {
@@ -21,8 +19,6 @@ export async function getStaticProps(context: any) {
 }
 
 function Course({ courses, courseName }: { courses: TypeCourse[]; courseName: string }) {
-	const md = useMediaQuery('(min-width: 768px)')
-
 	return (
 		<HomeLayout>
 			<div className="h-[20px] md:h-[50px]" />

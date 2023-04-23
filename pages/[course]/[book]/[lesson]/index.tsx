@@ -34,7 +34,7 @@ export async function getLesson({ bookName, slug }: { bookName: string; slug: st
 	const next = res.items[index + 1]
 
 	return {
-		html: `<iframe width="100%" height="350" src="https://www.youtube-nocookie.com/embed/${lesson.contentDetails.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+		html: `<iframe width="100%" class='h-[220px] md:h-[350px]' src="https://www.youtube-nocookie.com/embed/${lesson.contentDetails.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
 		title: lesson.snippet.title,
 		slug: lesson.contentDetails.videoId,
 		description: lesson.snippet.description,
@@ -74,7 +74,7 @@ function Article({ lesson }: { lesson: TypeCourseLesson & { description: string;
 
 	return (
 		<Container>
-			<header className="flex items-center justify-between py-10">
+			<header className="flex items-center justify-between py-7 md:py-10">
 				<Link
 					href={`/${query.course}/${query.book}`}
 					className="bg-white/10 rounded-md flex items-center gap-2 justify-between py-1 px-3 active:scale-95 duration-def cursor-pointer select-none"
@@ -85,7 +85,7 @@ function Article({ lesson }: { lesson: TypeCourseLesson & { description: string;
 						viewBox="0 0 24 24"
 						strokeWidth={1.5}
 						stroke="currentColor"
-						className="w-4 h-4"
+						className="w-4 h-4 flex-shrink-0"
 					>
 						<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
 					</svg>
@@ -104,7 +104,7 @@ function Article({ lesson }: { lesson: TypeCourseLesson & { description: string;
 					__html: lesson.html,
 				}}
 			/>
-			<div className="h-[50px]" />
+			<div className="h-[30px] md:h-[50px]" />
 
 			<h3 className="h1">{lesson.title}</h3>
 
@@ -114,11 +114,11 @@ function Article({ lesson }: { lesson: TypeCourseLesson & { description: string;
 
 			<div className="h-[30px]" />
 
-			<div className="flex items-center justify-between gap-10">
+			<div className="grid md:grid-cols-2 grid-cols-1 gap-7 md:gap-10">
 				{lesson.prev ? (
 					<Link
 						href={`/${router.query.course}/${router.query.book}/${lesson.prev.slug}`}
-						className="bg-white/10 rounded-md flex items-center gap-3 justify-between py-2 px-3 active:scale-95 duration-def cursor-pointer select-none"
+						className="bg-white/10 rounded-md flex items-center gap-3 justify-between py-3 px-3 active:scale-95 duration-def cursor-pointer select-none"
 					>
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -126,7 +126,7 @@ function Article({ lesson }: { lesson: TypeCourseLesson & { description: string;
 							viewBox="0 0 24 24"
 							strokeWidth={1.5}
 							stroke="currentColor"
-							className="w-4 h-4"
+							className="w-4 h-4 flex-shrink-0"
 						>
 							<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
 						</svg>
@@ -140,7 +140,7 @@ function Article({ lesson }: { lesson: TypeCourseLesson & { description: string;
 				{lesson.next ? (
 					<Link
 						href={`/${router.query.course}/${router.query.book}/${lesson.next.slug}`}
-						className="bg-white/10 rounded-md flex items-center gap-3 justify-between py-2 px-3 active:scale-95 duration-def cursor-pointer select-none"
+						className="bg-white/10 rounded-md flex items-center gap-3 justify-between py-3 px-3 active:scale-95 duration-def cursor-pointer select-none"
 					>
 						<p className="p">{lesson.next.title}</p>
 
@@ -150,7 +150,7 @@ function Article({ lesson }: { lesson: TypeCourseLesson & { description: string;
 							viewBox="0 0 24 24"
 							strokeWidth={1.5}
 							stroke="currentColor"
-							className="w-4 h-4 rotate-180"
+							className="w-4 h-4 rotate-180 flex-shrink-0"
 						>
 							<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
 						</svg>

@@ -5,10 +5,8 @@ import { TypeCourse, courses } from '@/data'
 import { HomeLayout } from '@/components/Layout'
 
 export async function getStaticPaths(params: any) {
-	// console.log(params, 'params')
-
 	return {
-		paths: [{ params: { course: '1' } }, { params: { course: '2' } }],
+		paths: [],
 		fallback: 'blocking',
 	}
 }
@@ -17,7 +15,6 @@ export async function getStaticProps(context: any) {
 	const { course: courseName } = context.params
 
 	return {
-		// Passed to the page component as props
 		props: { courses: courses(), courseName },
 	}
 }

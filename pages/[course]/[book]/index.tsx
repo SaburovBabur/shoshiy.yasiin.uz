@@ -8,10 +8,8 @@ import { toast } from 'sonner'
 import { Toaster } from 'sonner'
 
 export async function getStaticPaths(params: any) {
-	// console.log(params, 'params')
-
 	return {
-		paths: [{ params: { book: '1', course: 'durusul-lugah' } }, { params: { book: '2', course: 'durusul-lugah' } }],
+		paths: [],
 		fallback: 'blocking',
 	}
 }
@@ -22,7 +20,6 @@ export async function getStaticProps(context: any) {
 	const book = courses().find((course) => (course.slug === bookName ? course : false))
 
 	return {
-		// Passed to the page component as props
 		props: { book },
 	}
 }

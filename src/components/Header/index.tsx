@@ -1,5 +1,3 @@
-'use client'
-
 import Logo from '@/components/Logo'
 import Tabs from '@/components/Tabs'
 import Link from 'next/link'

@@ -29,7 +29,7 @@ function Header({ children }: HeaderProps) {
 
 	return (
 		<>
-			<header className="flex items-center justify-between">
+			<header className="flex-col md:flex-row space-y-5 md:space-y-0 flex items-center justify-between">
 				<Link href={'/'}>
 					<Logo className="h-5" />
 				</Link>

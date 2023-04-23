@@ -44,7 +44,7 @@ function Lesson({ book }: { book: TypeCourse }) {
 
 	return (
 		<HomeLayout>
-			<div className="h-[50px]" />
+			<div className="md:h-[50px] h-[30px]" />
 
 			<h3 className="h3">
 				{book.title} {book.subTitle}
@@ -58,7 +58,7 @@ function Lesson({ book }: { book: TypeCourse }) {
 
 			<div className="h-[50px]" />
 
-			<div className="grid grid-cols-2 gap-7">
+			<div className="grid grid-cols-1 md:grid-cols-2 gap-7">
 				<a
 					href={book.file}
 					target="_blank"
@@ -85,11 +85,11 @@ function Lesson({ book }: { book: TypeCourse }) {
 
 			<div className="h-[50px]" />
 
-			<div className="flex flex-col gap-8 relative">
-				<div className="h-[100%] w-[1px] rounded-full absolute top-0 left-[10px] bg-primary-def" />
+			<div className="flex flex-col gap-7 md:gap-8 relative">
+				<div className="h-[100%] w-[1px] rounded-full absolute top-0 left-[6px] md:left-[10px] bg-primary-def" />
 				{book.lessons.map((lesson: any, idx: number) => (
 					<div key={idx} className="flex items-center">
-						<div className="h-5 w-5 rounded-md border border-primary-def bg-black z-10 bg-primary-def duration-def cursor-pointer" />
+						<div className="h-3 w-3 md:h-5 md:w-5 rounded-md border border-primary-def bg-black z-10 bg-primary-def duration-def cursor-pointer" />
 
 						<Link
 							href={`${router.asPath}/${lesson.slug}`}

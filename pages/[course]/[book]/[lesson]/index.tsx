@@ -5,7 +5,7 @@ import { TypeCourseLesson, courses } from '@/data'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-export async function getStaticPaths(params: any) {
+export async function getStaticPaths() {
 	return {
 		paths: [],
 		fallback: 'blocking',

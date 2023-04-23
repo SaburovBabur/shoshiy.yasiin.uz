@@ -26,7 +26,7 @@ function Course({ courses, courseName }: { courses: TypeCourse[]; courseName: st
 			<div className="space-y-10 md:space-y-14">
 				{courseName === 'durusul-lugah' ? (
 					<>
-						<h3 className="h1 flex items-center justify-center">Durusul lug`ah 📚</h3>
+						<h3 className="h1 flex items-center">📚 Durusul lug`ah</h3>
 
 						{courses.map((course, idx) => (
 							<Link

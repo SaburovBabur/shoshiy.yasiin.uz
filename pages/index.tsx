@@ -1,9 +1,11 @@
 import { useRouter } from 'next/router'
+import { useEffect } from 'react'
 
 function Home() {
 	const router = useRouter()
-
-	router.push('/durusul-lugah')
+	useEffect(() => {
+		router.push('/durusul-lugah')
+	}, [])
 
 	return <></>
 }

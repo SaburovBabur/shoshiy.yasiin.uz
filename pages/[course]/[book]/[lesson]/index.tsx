@@ -20,26 +20,33 @@ export async function getLesson({ bookName, slug }: { bookName: string; slug: st
 	}
 
 	const res = await fetch(`${process.env.URL}/${book.json}`, { method: 'get' }).then((res) => res.json())
-	const lesson = res.items.find((item: any) => {
+
+	let index = 1
+
+	const lesson = res.items.find((item: any, idx: number) => {
 		if (item.contentDetails.videoId === slug) {
+			index = idx
 			return true
 		}
 	})
+
+	const prev = res.items[index - 1]
+	const next = res.items[index + 1]
 
 	return {
 		html: `<iframe width="100%" height="350" src="https://www.youtube-nocookie.com/embed/${lesson.contentDetails.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
 		title: lesson.snippet.title,
 		slug: lesson.contentDetails.videoId,
 		description: lesson.snippet.description,
-	} satisfies TypeCourseLesson & { description: string }
+		prev: prev ? { title: prev.snippet.title, slug: prev.contentDetails.videoId } : null,
+		next: next ? { title: next.snippet.title, slug: next.contentDetails.videoId } : null,
+	} satisfies TypeCourseLesson & { description: string; prev: any; next: any }
 }
 
 export async function getStaticProps(context: any) {
 	try {
 		const { book: bookName, lesson: lessonName } = context.params
 		const lesson = await getLesson({ bookName, slug: lessonName })
-
-		console.log(lesson)
 
 		return {
 			props: { lesson },
@@ -51,9 +58,11 @@ export async function getStaticProps(context: any) {
 	}
 }
 
-function Article({ lesson }: { lesson: TypeCourseLesson }) {
+function Article({ lesson }: { lesson: TypeCourseLesson & { description: string; prev: any; next: any } }) {
 	const router = useRouter()
 	const query = router.query
+
+	console.log(router)
 
 	if (!lesson) {
 		return (
@@ -106,35 +115,49 @@ function Article({ lesson }: { lesson: TypeCourseLesson }) {
 			<div className="h-[30px]" />
 
 			<div className="flex items-center justify-between gap-10">
-				<div className="bg-white/10 rounded-md flex items-center gap-3 justify-between py-2 px-3 active:scale-95 duration-def cursor-pointer select-none">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						strokeWidth={1.5}
-						stroke="currentColor"
-						className="w-4 h-4"
+				{lesson.prev ? (
+					<Link
+						href={`/${router.query.course}/${router.query.book}/${lesson.prev.slug}`}
+						className="bg-white/10 rounded-md flex items-center gap-3 justify-between py-2 px-3 active:scale-95 duration-def cursor-pointer select-none"
 					>
-						<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-					</svg>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							strokeWidth={1.5}
+							stroke="currentColor"
+							className="w-4 h-4"
+						>
+							<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+						</svg>
 
-					<p className="p">1-dars (a) | هَذَا - bu</p>
-				</div>
+						<p className="p">{lesson.prev.title}</p>
+					</Link>
+				) : (
+					<div />
+				)}
 
-				<div className="bg-white/10 rounded-md flex items-center gap-3 justify-between py-2 px-3 active:scale-95 duration-def cursor-pointer select-none">
-					<p className="p">2-dars (a) | هَذَا -bu</p>
-
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						strokeWidth={1.5}
-						stroke="currentColor"
-						className="w-4 h-4 rotate-180"
+				{lesson.next ? (
+					<Link
+						href={`/${router.query.course}/${router.query.book}/${lesson.next.slug}`}
+						className="bg-white/10 rounded-md flex items-center gap-3 justify-between py-2 px-3 active:scale-95 duration-def cursor-pointer select-none"
 					>
-						<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-					</svg>
-				</div>
+						<p className="p">{lesson.next.title}</p>
+
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							fill="none"
+							viewBox="0 0 24 24"
+							strokeWidth={1.5}
+							stroke="currentColor"
+							className="w-4 h-4 rotate-180"
+						>
+							<path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+						</svg>
+					</Link>
+				) : (
+					<div />
+				)}
 			</div>
 
 			<div className="h-[50px]" />

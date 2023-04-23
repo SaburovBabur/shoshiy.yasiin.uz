@@ -14,8 +14,6 @@ function Article({ params }: { params: { course: string; lesson: string; article
 		return <>Bunday kurs mavjud emas!</>
 	}
 
-	console.log(articleData)
-
 	return (
 		<div>
 			<div className="h-[50px]" />

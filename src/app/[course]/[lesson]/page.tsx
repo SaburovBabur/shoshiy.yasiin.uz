@@ -18,6 +18,12 @@ function Lesson({ params }: { params: { course: string; lesson: string } }) {
 				{courseData.title} {courseData.subTitle}
 			</h3>
 
+			<div className="h-[30px]" />
+
+			<p className="p/2 text-white/70">
+				*Kitob muqovasi va ichi videodagidan va rasmlarda bir biridan farq qilishi mumkun
+			</p>
+
 			<div className="h-[50px]" />
 
 			<div className="grid grid-cols-2 gap-7">
@@ -58,7 +64,7 @@ function Lesson({ params }: { params: { course: string; lesson: string } }) {
 				{courseData.lessons.map((lesson, idx) => (
 					<Link href={`/${params.course}/${params.lesson}/${lesson.slug}`} key={idx} className="flex items-center">
 						<div className="h-3 w-3 bg-primary-def rounded-full" />
-						<p className="p inline-block hover:text-primary-def duration-def cursor-pointer hover:bg-[#00DA83]/10 hover:font-medium px-5 py-2 ml-1 rounded-md">
+						<p className="p inline-block hover:text-primary-def duration-def cursor-pointer hover:bg-[#00DA83]/10 px-5 py-2 ml-1 rounded-md">
 							{lesson.title}
 						</p>
 					</Link>

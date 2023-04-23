@@ -4,7 +4,7 @@ export const courses: () => TypeCourse[] = () => [
 		json: 'durusul-lugah-1.json',
 		file: 'https://drvaniya.com/wp-content/uploads/2021/09/Madinah-Book_1-colour.pdf',
 		image: {
-			url: '/book-1.png',
+			url: '/book-1.webp',
 			alt: 'Durusul lughatil 1-kitob rasmi',
 		},
 		count: 29,
@@ -22,7 +22,7 @@ export const courses: () => TypeCourse[] = () => [
 		file: 'http://drvaniya.com/wp-content/uploads/2019/09/%D8%AF%D8%B1%D9%88%D8%B3-%D8%A7%D9%84%D9%84%D8%BA%D8%A9-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-Madinah-Book-2.pdf',
 		json: 'durusul-lugah-2.json',
 		image: {
-			url: '/book-2.png',
+			url: '/book-2.webp',
 			alt: 'Durusul lughatil 2-kitob rasmi',
 		},
 		count: 33,
@@ -47,7 +47,7 @@ export const courses: () => TypeCourse[] = () => [
 		json: 'durusul-lugah-3.json',
 		file: 'http://drvaniya.com/wp-content/uploads/2019/09/%D8%AF%D8%B1%D9%88%D8%B3-%D8%A7%D9%84%D9%84%D8%BA%D8%A9-%D8%A7%D9%84%D8%B9%D8%B1%D8%A8%D9%8A%D8%A9-Madinah-Book-3-lessons-1-17.pdf',
 		image: {
-			url: '/book-3.png',
+			url: '/book-3.webp',
 			alt: 'Durusul lughatil 3-kitob rasmi',
 		},
 		count: 45,

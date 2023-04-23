@@ -55,7 +55,7 @@ function Tabs<T extends string>({ value, onChange, tabs }: TabsProps<T>) {
 					left: (location?.left || 0) - (navSize?.left || 0),
 					transitionDuration,
 				}}
-				className={clsx('boundary bg-white/10 rounded-md absolute top-0 left-0')}
+				className={clsx('boundary bg-white/20 rounded-md absolute top-0 left-0')}
 			/>
 
 			{tabs.map((tab, idx) => (

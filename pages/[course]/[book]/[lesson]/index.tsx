@@ -62,8 +62,6 @@ function Article({ lesson }: { lesson: TypeCourseLesson & { description: string;
 	const router = useRouter()
 	const query = router.query
 
-	console.log(router)
-
 	if (!lesson) {
 		return (
 			<HomeLayout>

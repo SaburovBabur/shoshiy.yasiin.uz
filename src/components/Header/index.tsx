@@ -40,7 +40,7 @@ function Header({ children }: HeaderProps) {
 					tabs={[
 						{
 							jsx: (
-								<Link href={`/durusul-lugah`} className="px-4 py-1 block">
+								<Link href={`/durusul-lugah`} className="px-2 py-1 md:px-4 md:py-1 block">
 									durusul lug`ah
 								</Link>
 							),
@@ -48,7 +48,7 @@ function Header({ children }: HeaderProps) {
 						},
 						{
 							jsx: (
-								<Link href={`/ajurrumiyya`} className="px-4 py-1 block">
+								<Link href={`/ajurrumiyya`} className="px-2 py-1 md:px-4 md:py-1 block">
 									ajurrumiyya
 								</Link>
 							),
@@ -56,7 +56,7 @@ function Header({ children }: HeaderProps) {
 						},
 						{
 							jsx: (
-								<Link href={`/nahv-tatbiqiy`} className="px-4 py-1 block">
+								<Link href={`/nahv-tatbiqiy`} className="px-2 py-1 md:px-4 md:py-1 block">
 									nahv tatbiqiy
 								</Link>
 							),

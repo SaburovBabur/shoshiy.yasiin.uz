@@ -20,15 +20,15 @@ body {
 }
 
 .h1 {
-  @apply text-2xl font-bold
+  @apply text-xl md:text-2xl font-bold
 }
 
 .h2 {
-  @apply text-[22px] leading-5 font-bold
+  @apply text-[20px] md:text-[22px] leading-4 md:leading-5 font-bold
 }
 
 .h3 {
-  @apply text-xl font-bold
+  @apply text-lg md:text-xl font-bold
 }
 
 .p {
@@ -36,5 +36,5 @@ body {
 }
 
 .p\/2 {
-  @apply !text-[14px] leading-5 font-normal
+  @apply !text-[13px] md:!text-[14px] leading-5 font-normal
 }

@@ -3,6 +3,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { TypeCourse, courses } from '@/data'
 import { HomeLayout } from '@/components/Layout'
+import useMediaQuery from '@/hooks/useMediaQuery'
 
 export async function getStaticPaths(params: any) {
 	return {
@@ -20,11 +21,13 @@ export async function getStaticProps(context: any) {
 }
 
 function Course({ courses, courseName }: { courses: TypeCourse[]; courseName: string }) {
+	const md = useMediaQuery('(min-width: 768px)')
+
 	return (
 		<HomeLayout>
-			<div className="h-[50px]" />
+			<div className="h-[20px] md:h-[50px]" />
 
-			<div className="space-y-14">
+			<div className="space-y-10 md:space-y-14">
 				{courseName === 'durusul-lugah' ? (
 					<>
 						<h3 className="h1 flex items-center justify-center">Durusul lug`ah 📚</h3>
@@ -34,23 +37,20 @@ function Course({ courses, courseName }: { courses: TypeCourse[]; courseName: st
 								href={`/${courseName}/${course.slug}`}
 								replace={false}
 								key={course.slug}
-								className="w-full rounded-lg bg-white/10 py-4 px-4 cursor-pointer | flex gap-7 hover:scale-[102%] duration-def relative"
+								className="w-full rounded-lg bg-white/10 py-3 px-3 md:py-4 md:px-4 cursor-pointer | flex gap-7 hover:scale-[102%] duration-def relative"
 							>
 								<div className="absolute left-2 top-3 " style={{ filter: 'blur(30px)' }}>
-									<Image
+									<img
 										src={course.image.url}
 										alt={course.image.alt}
-										height={150}
-										width={150}
-										className="select-none"
+										className="select-none aspect-auto md:h-[200px] h-[180px]"
 									/>
 								</div>
-								<Image
+
+								<img
 									src={course.image.url}
 									alt={course.image.alt}
-									height={200}
-									width={150}
-									className="select-none relative"
+									className="select-none relative aspect-auto md:h-[200px] h-[180px]"
 								/>
 
 								<div className="flex flex-col justify-between py-2">

@@ -1,17 +1,11 @@
-import Container from '@/components/Container'
-import Header from '@/components/Header'
-import React from 'react'
+import { useRouter } from 'next/router'
 
 function Home() {
-	return (
-		<>
-			<Container>
-				<div className="py-7">
-					<Header />
-				</div>
-			</Container>
-		</>
-	)
+	const router = useRouter()
+
+	router.push('/durusul-lugah')
+
+	return <></>
 }
 
 export default Home

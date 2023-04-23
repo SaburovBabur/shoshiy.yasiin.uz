@@ -7,6 +7,7 @@ export const courses: () => TypeCourse[] = () => [
 			url: '/book-1.png',
 			alt: 'Durusul lughatil 1-kitob rasmi',
 		},
+		count: 29,
 		title: '1 - kitob',
 		subTitle: 'Durusul lug`ah',
 		description: `Kurs arab tilini 0 dan boshlayotkanlar uchun mo’ljallangan. Davomiyligi ~1 oy uchun mo'ljallangan.`,
@@ -24,6 +25,7 @@ export const courses: () => TypeCourse[] = () => [
 			url: '/book-2.png',
 			alt: 'Durusul lughatil 2-kitob rasmi',
 		},
+		count: 33,
 		title: '2 - kitob',
 		subTitle: 'Durusul lug`ah',
 		description: 'Kurs 1 kitobning davomi. Davomiyligi ~2-3 oy uchun mo`ljallangan.',
@@ -48,6 +50,7 @@ export const courses: () => TypeCourse[] = () => [
 			url: '/book-3.png',
 			alt: 'Durusul lughatil 3-kitob rasmi',
 		},
+		count: 45,
 		title: '3 - kitob',
 		subTitle: 'Durusul lug`ah',
 		description:
@@ -68,6 +71,7 @@ export interface TypeCourse {
 		url: string
 		alt: string
 	}
+	count: number
 	subTitle: string
 	description: string
 	file: string

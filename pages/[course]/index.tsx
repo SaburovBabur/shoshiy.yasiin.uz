@@ -73,7 +73,7 @@ function Course({ courses, courseName }: { courses: TypeCourse[]; courseName: st
 												/>
 											</svg>
 
-											<p className="p/2">{course.lessons.length}</p>
+											<p className="p/2">{course.count}</p>
 										</div>
 
 										<div className="flex items-center gap-3">

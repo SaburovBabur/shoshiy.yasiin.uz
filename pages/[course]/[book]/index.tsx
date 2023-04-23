@@ -20,7 +20,14 @@ export async function getStaticProps(context: any) {
 		throw new Error()
 	}
 
-	const res = await fetch(`${process.env.URL}/${book.json}`, { method: 'get' }).then((res) => res.json())
+	console.log(process.env.NODE_ENV)
+
+	const res = await fetch(
+		`${process.env.NODE_ENV === 'development' ? process.env.URL : 'https://shoshiy-yasiin-uz.vercel.app'}/${book.json}`,
+		{
+			method: 'get',
+		}
+	).then((res) => res.json())
 	const lessons = res.items.map((item: any) => {
 		return {
 			html: `<iframe width="100%" height="350" src="https://www.youtube-nocookie.com/embed/${item.contentDetails.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,

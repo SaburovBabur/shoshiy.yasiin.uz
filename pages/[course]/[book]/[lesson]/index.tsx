@@ -12,14 +12,37 @@ export async function getStaticPaths(params: any) {
 	}
 }
 
+export async function getLesson({ bookName, slug }: { bookName: string; slug: string }) {
+	const book = courses().find((course) => (course.slug === bookName ? course : false))
+
+	if (!book) {
+		throw new Error()
+	}
+
+	const res = await fetch(`${process.env.URL}/${book.json}`, { method: 'get' }).then((res) => res.json())
+	const lesson = res.items.find((item: any) => {
+		if (item.contentDetails.videoId === slug) {
+			return true
+		}
+	})
+
+	return {
+		html: `<iframe width="100%" height="350" src="https://www.youtube-nocookie.com/embed/${lesson.contentDetails.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+		title: lesson.snippet.title,
+		slug: lesson.contentDetails.videoId,
+		description: lesson.snippet.description,
+	} satisfies TypeCourseLesson & { description: string }
+}
+
 export async function getStaticProps(context: any) {
 	try {
 		const { book: bookName, lesson: lessonName } = context.params
-		const courseData = courses().find((course) => (course.slug === bookName ? course : false))
-		const lesson = courseData?.lessons.find((lesson) => (lesson.slug === lessonName ? lesson : false))
+		const lesson = await getLesson({ bookName, slug: lessonName })
+
+		console.log(lesson)
 
 		return {
-			props: { lesson: lesson ? lesson : null },
+			props: { lesson },
 		}
 	} catch (error) {
 		return {

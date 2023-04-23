@@ -1,11 +1,9 @@
 import { HomeLayout } from '@/components/Layout'
-import { TypeCourse, courses } from '@/data'
+import { TypeCourse, TypeCourseLesson, courses } from '@/data'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import React from 'react'
-import { toast } from 'sonner'
-import { Toaster } from 'sonner'
 
 export async function getStaticPaths(params: any) {
 	return {
@@ -16,11 +14,24 @@ export async function getStaticPaths(params: any) {
 
 export async function getStaticProps(context: any) {
 	const { book: bookName } = context.params
-
 	const book = courses().find((course) => (course.slug === bookName ? course : false))
 
+	if (!book) {
+		throw new Error()
+	}
+
+	const res = await fetch(`${process.env.URL}/${book.json}`, { method: 'get' }).then((res) => res.json())
+	const lessons = res.items.map((item: any) => {
+		return {
+			html: `<iframe width="100%" height="350" src="https://www.youtube-nocookie.com/embed/${item.contentDetails.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+			title: item.snippet.title,
+			slug: item.contentDetails.videoId,
+			description: item.snippet.description,
+		} satisfies TypeCourseLesson & { description: string }
+	})
+
 	return {
-		props: { book },
+		props: { book: { ...book, lessons }, data: res },
 	}
 }
 
@@ -33,7 +44,6 @@ function Lesson({ book }: { book: TypeCourse }) {
 
 	return (
 		<HomeLayout>
-			<Toaster />
 			<div className="h-[50px]" />
 
 			<h3 className="h3">
@@ -77,12 +87,9 @@ function Lesson({ book }: { book: TypeCourse }) {
 
 			<div className="flex flex-col gap-8 relative">
 				<div className="h-[100%] w-[1px] rounded-full absolute top-0 left-[10px] bg-primary-def" />
-				{book.lessons.map((lesson, idx) => (
+				{book.lessons.map((lesson: any, idx: number) => (
 					<div key={idx} className="flex items-center">
-						<div
-							onClick={() => toast.success('Dars bitkazildi!')}
-							className="h-5 w-5 rounded-md border border-primary-def bg-black z-10 hover:bg-primary-def duration-def cursor-pointer"
-						/>
+						<div className="h-5 w-5 rounded-md border border-primary-def bg-black z-10 bg-primary-def duration-def cursor-pointer" />
 
 						<Link
 							href={`${router.asPath}/${lesson.slug}`}

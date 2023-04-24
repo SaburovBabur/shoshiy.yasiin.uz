@@ -161,7 +161,7 @@ function Article({ lesson }: { lesson: TypeCourseLesson & { description: string;
 				)}
 			</div>
 
-			<div className="h-[50px]" />
+			<div className="h-[30px]" />
 		</Container>
 	)
 }

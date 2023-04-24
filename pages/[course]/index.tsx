@@ -108,7 +108,7 @@ function Course({ courses, courseName }: { courses: TypeCourse[]; courseName: st
 				)}
 			</div>
 
-			<div className="h-[50px]" />
+			<div className="h-[30px]" />
 		</HomeLayout>
 	)
 }

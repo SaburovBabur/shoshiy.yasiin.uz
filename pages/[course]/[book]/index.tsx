@@ -106,7 +106,7 @@ function Lesson({ book }: { book: TypeCourse }) {
 				))}
 			</div>
 
-			<div className="h-[50px]" />
+			<div className="h-[30px]" />
 		</HomeLayout>
 	)
 }

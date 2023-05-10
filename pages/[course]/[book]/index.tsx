@@ -63,7 +63,7 @@ function Lesson({ book }: { book: TypeCourse }) {
 
 			<div className="h-[50px]" />
 
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+			{/* <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
 				<a
 					href={book.file}
 					target="_blank"
@@ -88,7 +88,7 @@ function Lesson({ book }: { book: TypeCourse }) {
 				</a>
 			</div>
 
-			<div className="h-[50px]" />
+			<div className="h-[50px]" /> */}
 
 			<div className="flex flex-col gap-7 md:gap-8 relative">
 				<div className="h-[100%] w-[1px] rounded-full absolute top-0 left-[6px] md:left-[10px] bg-primary-def" />

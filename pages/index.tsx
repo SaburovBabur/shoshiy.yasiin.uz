@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 
 function Home() {
 	const router = useRouter()
+
 	useEffect(() => {
 		router.push('/durusul-lugah')
 	}, [])

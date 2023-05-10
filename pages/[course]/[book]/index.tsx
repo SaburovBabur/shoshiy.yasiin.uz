@@ -1,9 +1,7 @@
 import { HomeLayout } from '@/components/Layout'
 import { TypeCourse, TypeCourseLesson, courses } from '@/data'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
 
 export async function getStaticPaths(params: any) {
 	return {

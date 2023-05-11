@@ -23,8 +23,6 @@ function Tabs<T extends string>({ value, onChange, tabs }: TabsProps<T>) {
 	const location = activeTab?.getBoundingClientRect()
 	const navSize = navRef.current?.getBoundingClientRect()
 
-	console.log(navSize)
-
 	const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
 		setActiveTab(e.currentTarget)
 	}

@@ -5,7 +5,7 @@ import Head from 'next/head'
 import Script from 'next/script'
 import '@/styles/tailwind.css'
 
-const dm_sans = DM_Sans({ weight: ['400', '500', '700'], subsets: ['latin'] })
+const dm_sans = DM_Sans({ weight: ['400', '500', '700'], subsets: ['latin'], display: 'swap' })
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 	return (

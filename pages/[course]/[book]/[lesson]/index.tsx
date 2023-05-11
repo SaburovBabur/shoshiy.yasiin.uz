@@ -105,13 +105,19 @@ function Article({ lesson }: { lesson: TypeCourseLesson & { description: string;
 					__html: lesson.html,
 				}}
 			/>
+
 			<div className="h-[30px] md:h-[50px]" />
 
 			<h3 className="h1">{lesson.title}</h3>
 
 			<div className="h-[30px]" />
 
-			<div className="h-0.5 w-full bg-white/20" />
+			<div
+				className="whitespace-pre-line bg-white/20 px-3 py-3 rounded-md leading-9"
+				dangerouslySetInnerHTML={{
+					__html: lesson.description,
+				}}
+			/>
 
 			<div className="h-[30px]" />
 

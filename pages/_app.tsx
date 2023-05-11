@@ -1,10 +1,11 @@
 import type { AppProps } from 'next/app'
-import { DM_Sans as Nunito } from 'next/font/google'
+import { DM_Sans } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/react'
 import Head from 'next/head'
+import Script from 'next/script'
 import '@/styles/tailwind.css'
 
-const nunito = Nunito({ weight: ['400', '500', '700'], subsets: ['latin'] })
+const dm_sans = DM_Sans({ weight: ['400', '500', '700'], subsets: ['latin'] })
 
 export default function MyApp({ Component, pageProps }: AppProps) {
 	return (
@@ -24,10 +25,11 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 				<meta property="twitter:title" content="Hakim Shoshiy - Yaseen.uz ⚡" />
 				<meta property="twitter:description" content="Hakim Shoshiy - Yaseen.uz" />
 				<meta property="twitter:image" content="/bg.png" />
-				<script
-					dangerouslySetInnerHTML={{
-						__html: `
-						
+			</Head>
+
+			<Script
+				src={`
+	
 						(function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
 						m[i].l=1*new Date();
 						for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
@@ -41,11 +43,10 @@ export default function MyApp({ Component, pageProps }: AppProps) {
 							 webvisor:true
 						});
 						   
-							`,
-					}}
-				/>
-			</Head>
-			<div className={nunito.className}>
+							`}
+			/>
+
+			<div className={dm_sans.className}>
 				<Component {...pageProps} />
 
 				<Analytics />

@@ -1,9 +1,7 @@
 import { HomeLayout } from '@/components/Layout'
 import { TypeCourse, TypeCourseLesson, courses } from '@/data'
-import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import React from 'react'
 
 export async function getStaticPaths(params: any) {
 	return {
@@ -26,6 +24,7 @@ export async function getStaticProps(context: any) {
 			method: 'get',
 		}
 	).then((res) => res.json())
+
 	const lessons = res.items.map((item: any) => {
 		return {
 			html: `<iframe width="100%" height="350" src="https://www.youtube-nocookie.com/embed/${item.contentDetails.videoId}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
@@ -63,7 +62,7 @@ function Lesson({ book }: { book: TypeCourse }) {
 
 			<div className="h-[50px]" />
 
-			<div className="grid grid-cols-1 md:grid-cols-2 gap-7">
+			{/* <div className="grid grid-cols-1 md:grid-cols-2 gap-7">
 				<a
 					href={book.file}
 					target="_blank"
@@ -88,7 +87,7 @@ function Lesson({ book }: { book: TypeCourse }) {
 				</a>
 			</div>
 
-			<div className="h-[50px]" />
+			<div className="h-[50px]" /> */}
 
 			<div className="flex flex-col gap-7 md:gap-8 relative">
 				<div className="h-[100%] w-[1px] rounded-full absolute top-0 left-[6px] md:left-[10px] bg-primary-def" />

@@ -1,6 +1,6 @@
 {
 	"kind": "youtube#playlistItemListResponse",
-	"etag": "DIZjUy6h55Pk-EH40BFMTG9AZ9U",
+	"etag": "peSx5uwHj0SrDhNdtW4XVDq01os",
 	"items": [
 		{
 			"kind": "youtube#playlistItem",
@@ -2326,52 +2326,110 @@
 		},
 		{
 			"kind": "youtube#playlistItem",
-			"etag": "QHc4wqJ3RocJw5PKR7kMuP9nsrc",
+			"etag": "Le2DdtREvUbKGqZWbjkLItwXCKA",
 			"id": "UExWdUlBS05pUlJwNDc5Y2cxblctUDNrNUFFUWJ5SVY0Ui41MzY4MzcwOUFFRUU3QzEx",
 			"snippet": {
 				"publishedAt": "2022-08-31T11:44:44Z",
 				"channelId": "UChaznHfWg1WCY9LCCvx2YQw",
-				"title": "Private video",
-				"description": "This video is private.",
-				"thumbnails": {},
+				"title": "Oson arab tili | 33-dars | 3-kitob",
+				"description": "",
+				"thumbnails": {
+					"default": {
+						"url": "https://i.ytimg.com/vi/nkGe-P1pR7Y/default.jpg",
+						"width": 120,
+						"height": 90
+					},
+					"medium": {
+						"url": "https://i.ytimg.com/vi/nkGe-P1pR7Y/mqdefault.jpg",
+						"width": 320,
+						"height": 180
+					},
+					"high": {
+						"url": "https://i.ytimg.com/vi/nkGe-P1pR7Y/hqdefault.jpg",
+						"width": 480,
+						"height": 360
+					},
+					"standard": {
+						"url": "https://i.ytimg.com/vi/nkGe-P1pR7Y/sddefault.jpg",
+						"width": 640,
+						"height": 480
+					},
+					"maxres": {
+						"url": "https://i.ytimg.com/vi/nkGe-P1pR7Y/maxresdefault.jpg",
+						"width": 1280,
+						"height": 720
+					}
+				},
 				"channelTitle": "Hakim Shoshiy",
 				"playlistId": "PLVuIAKNiRRp479cg1nW-P3k5AEQbyIV4R",
 				"position": 43,
 				"resourceId": {
 					"kind": "youtube#video",
 					"videoId": "nkGe-P1pR7Y"
-				}
+				},
+				"videoOwnerChannelTitle": "Hakim Shoshiy",
+				"videoOwnerChannelId": "UChaznHfWg1WCY9LCCvx2YQw"
 			},
 			"contentDetails": {
-				"videoId": "nkGe-P1pR7Y"
+				"videoId": "nkGe-P1pR7Y",
+				"videoPublishedAt": "2023-04-24T04:00:22Z"
 			},
 			"status": {
-				"privacyStatus": "private"
+				"privacyStatus": "public"
 			}
 		},
 		{
 			"kind": "youtube#playlistItem",
-			"etag": "TCvR2p-NErRoBbii4YNbKJ0GL24",
+			"etag": "qpHH_zwP0kK717xLrJ0mom9RmiI",
 			"id": "UExWdUlBS05pUlJwNDc5Y2cxblctUDNrNUFFUWJ5SVY0Ui4yQjZFRkExQjFGODk3RUFD",
 			"snippet": {
 				"publishedAt": "2022-08-31T11:46:00Z",
 				"channelId": "UChaznHfWg1WCY9LCCvx2YQw",
-				"title": "Private video",
-				"description": "This video is private.",
-				"thumbnails": {},
+				"title": "Oson arab tili | 34-dars | 3-kitob (Yakun)",
+				"description": "",
+				"thumbnails": {
+					"default": {
+						"url": "https://i.ytimg.com/vi/vB1nlAew1nw/default.jpg",
+						"width": 120,
+						"height": 90
+					},
+					"medium": {
+						"url": "https://i.ytimg.com/vi/vB1nlAew1nw/mqdefault.jpg",
+						"width": 320,
+						"height": 180
+					},
+					"high": {
+						"url": "https://i.ytimg.com/vi/vB1nlAew1nw/hqdefault.jpg",
+						"width": 480,
+						"height": 360
+					},
+					"standard": {
+						"url": "https://i.ytimg.com/vi/vB1nlAew1nw/sddefault.jpg",
+						"width": 640,
+						"height": 480
+					},
+					"maxres": {
+						"url": "https://i.ytimg.com/vi/vB1nlAew1nw/maxresdefault.jpg",
+						"width": 1280,
+						"height": 720
+					}
+				},
 				"channelTitle": "Hakim Shoshiy",
 				"playlistId": "PLVuIAKNiRRp479cg1nW-P3k5AEQbyIV4R",
 				"position": 44,
 				"resourceId": {
 					"kind": "youtube#video",
 					"videoId": "vB1nlAew1nw"
-				}
+				},
+				"videoOwnerChannelTitle": "Hakim Shoshiy",
+				"videoOwnerChannelId": "UChaznHfWg1WCY9LCCvx2YQw"
 			},
 			"contentDetails": {
-				"videoId": "vB1nlAew1nw"
+				"videoId": "vB1nlAew1nw",
+				"videoPublishedAt": "2023-05-01T04:00:26Z"
 			},
 			"status": {
-				"privacyStatus": "private"
+				"privacyStatus": "public"
 			}
 		}
 	],
